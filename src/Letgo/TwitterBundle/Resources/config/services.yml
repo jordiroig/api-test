@@ -1,0 +1,5 @@
+parameters:
+    letgo.twitter.reader.class: Letgo\TwitterBundle\Services\Twitter\Reader
+services:
+    letgo.twitter.reader:
+        class: "%letgo.twitter.reader.class%"
