@@ -4,13 +4,19 @@ imports:
 parameters:
     letgo.twitter.reader.class: Letgo\TwitterBundle\Services\Twitter\Reader
     guzzle.oauth.class: GuzzleHttp\Subscriber\Oauth\Oauth1
+    guzzle.client.class: GuzzleHttp\Client
 
 services:
     letgo.twitter.reader:
         class: "%letgo.twitter.reader.class%"
         arguments:
-            oauth: "@guzzle.oauth"
-            base_url: "%twitter.base_url%"
+            twitter_client: "@guzzle.twitter.client"
+    guzzle.twitter.client:
+        class: "%guzzle.client.class%"
+        arguments:
+            base_uri: "%twitter.baseurl%"
+        calls:
+            - ["getOauthParams", ["@guzzle.oauth"]]
     guzzle.oauth:
         class: "%guzzle.oauth.class%"
         arguments: ["%twitter.config%"]
