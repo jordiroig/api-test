@@ -19,9 +19,9 @@ class TwitterController extends FOSRestController
     /**
 	 * @Get("/tweets/{name}", name="get_tweets")
 	 */   
-    public function getTweetsAction($username)
+    public function getTweetsAction($name)
     {
-	    $prova = $this->get('letgo.twitter.reader')->get('statuses/user_timeline.json?screen_name='.$username.'&count=5')->send()->json();
+	    $prova = $this->get('letgo.twitter.reader')->get('statuses/user_timeline.json?screen_name='.$name.'&count=5')->send()->json();
 	    die(var_dump($prova));
 	    return $name;
     }
