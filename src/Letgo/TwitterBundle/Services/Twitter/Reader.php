@@ -19,12 +19,12 @@ class Reader
 		]);
 		$stack->push($oauth);
 		$client = new Client([
-			'base_uri' => 'https://api.twitter.com/',
+			'base_uri' => 'https://api.twitter.com/1.1/',
 			'handler' => $stack,
-			'defaults' => ['auth' => 'oauth']
+			'auth' => 'oauth'
 		]);
 
-		$res = $client->get('1.1/statuses/home_timeline.json?screen_name='.$username.'&count=5');
+		$res = $client->get('statuses/home_timeline.json?screen_name='.$username.'&count=5');
 		return $res;
 	}
 }
