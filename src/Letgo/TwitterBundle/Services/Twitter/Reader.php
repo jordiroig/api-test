@@ -19,7 +19,7 @@ class Reader
 		]);
 		$stack->push($oauth);
 		$client = new Client([
-			'base_uri' => 'https://api.twitter.com',
+			'base_uri' => 'https://api.twitter.com/1.1',
 			'handler' => $stack,
 			'defaults' => ['auth' => 'oauth']
 		]);
