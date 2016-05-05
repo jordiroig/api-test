@@ -29,7 +29,7 @@ class Reader
 			'auth' => 'oauth'
 		]);
 
-		$res = $client->get('statuses/home_timeline.json?screen_name='.$username.'&count=5')->getBody();
+		$res = $client->get('statuses/user_timeline.json?screen_name='.$username.'&count=10&exclude_replies=true')->getBody()->getContents();
 		return $res;
 	}
 }
