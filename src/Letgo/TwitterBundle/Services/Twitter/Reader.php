@@ -12,10 +12,10 @@ class Reader
 	{
 		$stack = HandlerStack::create();
 		$oauth = new Oauth1([
-			'consumer_key'    => 'my_key',
-			'consumer_secret' => 'my_secret',
-			'token'           => 'my_token',
-			'token_secret'    => 'my_token_secret'
+			'consumer_key'    => 'Ct67CMSMLMygbIO07np38U4KV',
+			'consumer_secret' => 'Ft4CS5tE0VLQ3OiHWSlaABQeADsslVRywBUghdelT4mw2hwPq4',
+			'token'           => '728145508351385600-hkiOhSoBkrDBimUMhfCN6vSu6EzUJth',
+			'token_secret'    => 'F2oxc0DoT9Va02Vq6fevENKZLBzk50tk9dlvaX71xOFnc'
 		]);
 		$stack->push($oauth);
 		$client = new Client([
