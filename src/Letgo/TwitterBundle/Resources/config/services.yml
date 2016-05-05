@@ -10,7 +10,8 @@ parameters:
 services:
     guzzle.client:
         class: "%guzzle.client.class%"
-        arguments: - {base_uri: "%twitter.base_uri%", auth: 'oauth', handler: "@guzzle.stack"}
+        arguments:
+            - {base_uri: "%twitter.base_uri%", auth: 'oauth', handler: "@guzzle.stack"}
     guzzle.stack:
         class: "%guzzle.stack.class%"
         factory: ["%guzzle.stack.class%", create]
