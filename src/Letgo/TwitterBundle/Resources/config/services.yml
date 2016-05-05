@@ -9,8 +9,8 @@ services:
     letgo.twitter.reader:
         class: "%letgo.twitter.reader.class%"
         arguments:
-            base_url: "%twitter.base_url%"
             oauth: "@guzzle.oauth"
+            base_url: "%twitter.base_url%"
     guzzle.oauth:
         class: "%guzzle.oauth.class%"
         arguments: ["%twitter.config%"]
