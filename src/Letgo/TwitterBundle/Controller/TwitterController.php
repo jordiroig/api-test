@@ -5,6 +5,7 @@ namespace Letgo\TwitterBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TwitterController extends FOSRestController
 {
@@ -17,12 +18,12 @@ class TwitterController extends FOSRestController
     }
     
     /**
-	 * @Get("/tweets/{name}", name="get_tweets")
+	 * @Get("/tweets/{username}", name="get_tweets")
+     * @return JsonResponse
 	 */   
-    public function getTweetsAction($name)
+    public function getTweetsAction($username)
     {
-	    $prova = $this->get('letgo.twitter.reader')->getTweets($name);
-	    die(var_dump($prova));
-	    return $name;
+	    $tweets = $this->get('letgo.twitter.reader')->getTweetsByUser($username);
+        return new JsonResponse($tweets);
     }
 }
