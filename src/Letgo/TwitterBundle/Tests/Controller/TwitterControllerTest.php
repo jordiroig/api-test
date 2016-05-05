@@ -4,7 +4,7 @@ namespace Letgo\TwitterBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DefaultControllerTest extends WebTestCase
+class TwitterControllerTest extends WebTestCase
 {
     public function testIndex()
     {
