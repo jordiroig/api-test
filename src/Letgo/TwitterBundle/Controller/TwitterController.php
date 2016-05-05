@@ -2,7 +2,6 @@
 
 namespace Letgo\TwitterBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
@@ -20,9 +19,9 @@ class TwitterController extends FOSRestController
     /**
 	 * @Get("/tweets/{name}", name="get_tweets")
 	 */   
-    public function getTweetsAction($name)
+    public function getTweetsAction($username)
     {
-	    $prova = $this->get('guzzle.twitter.client')->get('statuses/user_timeline.json?screen_name='.$name.'&count=5')->send()->json();
+	    $prova = $this->get('letgo.twitter.reader')->get('statuses/user_timeline.json?screen_name='.$username.'&count=5')->send()->json();
 	    die(var_dump($prova));
 	    return $name;
     }
