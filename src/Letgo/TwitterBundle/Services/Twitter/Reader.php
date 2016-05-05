@@ -3,21 +3,16 @@
 namespace Letgo\TwitterBundle\Services\Twitter;
 
 use Exception;
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use GuzzleHttp\Client as GuzzleClient;
 
 class Reader
 {
-	private $oauth1;
-	private $base_url;
+	private $twitter_client;
 
 	public function __construct(
-		Oauth1 $oauth1,
-		$base_url
+		GuzzleClient $twitter_client
 	) {
-		$this->oauth1 = $oauth1;
-		$this->base_url = $base_url;
+		$this->twitter_client = $twitter_client;
 	}
 
 	/**
@@ -26,16 +21,8 @@ class Reader
      */
 	public function getTweetsByUser($username)
 	{
-		$stack = HandlerStack::create();
-		$stack->push($this->oauth1);
-		$client = new Client([
-			'base_uri' => $this->base_url,
-			'handler' => $stack,
-			'auth' => 'oauth'
-		]);
-
 		try {
-			$res = $client->get('statuses/user_timeline.json?screen_name=' . $username . '&count=10')->getBody();
+			$res = $this->twitter_client->get('statuses/user_timeline.json?screen_name=' . $username . '&count=10')->getBody();
 		} catch (Exception $e) {
 			return array('error' => $e->getCode(), 'message' => $e->getMessage());
 		};

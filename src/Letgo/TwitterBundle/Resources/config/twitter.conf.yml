@@ -1,5 +1,5 @@
 parameters:
-    twitter.base_url: "https://api.twitter.com/1.1/"
+    twitter.base_uri: "https://api.twitter.com/1.1/"
     twitter.config:
         consumer_key: "Ct67CMSMLMygbIO07np38U4KV"
         consumer_secret: "Ft4CS5tE0VLQ3OiHWSlaABQeADsslVRywBUghdelT4mw2hwPq4"
