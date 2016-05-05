@@ -22,7 +22,7 @@ class Reader
 
 	/**
 	 * @param $username
-	 * @return string
+	 * @return array
      */
 	public function getTweetsByUser($username)
 	{
@@ -37,13 +37,13 @@ class Reader
 		try {
 			$res = $client->get('statuses/user_timeline.json?screen_name=' . $username . '&count=10')->getBody();
 		} catch (Exception $e) {
-			die('Error '.$e->getMessage());
+			return array('error' => $e->getCode(), 'message' => $e->getMessage());
 		};
 		$res_json = json_decode($res);
 		$result_array = array();
 		if(count($res_json)) {
 			foreach ($res_json as $tweet) {
-				array_push($result_array, $tweet);
+				array_push($result_array, $tweet->text);
 			}
 		}
 
