@@ -22,8 +22,8 @@ class TwitterController extends FOSRestController
 	 */   
     public function getTweetsAction($name)
     {
-	    $prova = $this->get('letgo.twitter.reader')->getTweets($name);
-	    die($prova);
+	    $prova = $this->get('guzzle.twitter.client')->get('statuses/user_timeline.json?screen_name='.$name.'&count=5')->send()->json();
+	    die(var_dump($prova));
 	    return $name;
     }
 }

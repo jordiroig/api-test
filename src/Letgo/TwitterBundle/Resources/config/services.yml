@@ -1,5 +1,20 @@
+imports:
+    - { resource: twitter.conf.yml }
+
 parameters:
     letgo.twitter.reader.class: Letgo\TwitterBundle\Services\Twitter\Reader
+    class.guzzle.response: GuzzleHttpMessageResponse
+    class.guzzle.client: GuzzleHttpClient
+    class.guzzle.oauthplugin: GuzzlePluginOauthOauthPlugin
+
 services:
     letgo.twitter.reader:
         class: "%letgo.twitter.reader.class%"
+    guzzle.twitter.client:
+        class: "%class.guzzle.client%"
+        arguments: ["%twitter.baseurl%"]
+        calls:
+            - [addSubscriber, ["@guzzle.twitter.oauthplugin"]]
+    guzzle.twitter.oauthplugin:
+        class: "%class.guzzle.oauthplugin%"
+        arguments: ["%twitter.config%"]
