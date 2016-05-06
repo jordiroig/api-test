@@ -21,7 +21,9 @@
         "jms/serializer-bundle": "^1.1",
         "guzzlehttp/guzzle": "^6.2",
         "guzzlehttp/oauth-subscriber": "^0.3.0",
-        "phpunit/phpunit": "^4.8"
+        "phpunit/phpunit": "^4.8",
+        "predis/predis": "^1.0",
+        "snc/redis-bundle": "^1.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

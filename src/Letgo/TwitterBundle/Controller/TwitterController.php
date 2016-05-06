@@ -23,7 +23,16 @@ class TwitterController extends FOSRestController
 	 */   
     public function getTweetsAction($username)
     {
-	    $tweets = $this->get('letgo.twitter.reader')->getTweetsByUser($username);
+	    $redis = $this->get('snc_redis.default');
+	    
+	    if($redis->get($username)) {
+		    $tweets = json_decode($redis->get($username));
+	    }
+	    else {
+		    $tweets = $this->get('letgo.twitter.reader')->getTweetsByUser($username);
+			$redis->set($username, json_encode($tweets), 'NX', 'EX', 3600);
+	    }
+	    
         return new JsonResponse($tweets);
     }
 }

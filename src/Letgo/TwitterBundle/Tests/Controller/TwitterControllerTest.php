@@ -10,8 +10,8 @@ class TwitterControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
-
-        $this->assertContains('Hello World', $client->getResponse()->getContent());
+        $crawler = $client->request('GET', '/v1/tweets/jordiletgo');
+		$this->assertEquals(200, $client->getResponse()->getStatusCode());
+		$this->assertTrue($client->getResponse()->headers->contains('Content-Type', 'application/json'));
     }
 }

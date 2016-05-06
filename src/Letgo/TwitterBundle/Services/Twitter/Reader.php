@@ -2,7 +2,6 @@
 
 namespace Letgo\TwitterBundle\Services\Twitter;
 
-use Exception;
 use GuzzleHttp\Client as GuzzleClient;
 
 class Reader
